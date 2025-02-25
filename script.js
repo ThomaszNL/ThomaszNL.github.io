@@ -17,7 +17,7 @@ const formulas = [
     { category: "Chemistry", name: "Charles's Law", formula: "V1/T1 = V2/T2" },
     { category: "Mathematics", name: "Binomial Theorem", formula: "(a+b)^n = Σ[k=0 to n] (nCk) a^(n-k) b^k" },
     { category: "Physics", name: "Coulomb's Law", formula: "F = k(q1q2/r²)" },
-    { category: "Chemistry", name: "Gibbs Free Energy", formula: "ΔG = ΔH - TΔS" }
+    { category: "Chemistry", name: "Gibbs Free Energy", formula: "ΔG = ΔH - TΔS" },
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
