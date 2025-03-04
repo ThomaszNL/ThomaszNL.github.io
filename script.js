@@ -1,5 +1,3 @@
-/* script.js */
-
 const formulas = [
     { category: "Mathematics", name: "Quadratic Formula", formula: "x = (-b ± √(b² - 4ac)) / 2a" },
     { category: "Physics", name: "Newton's Second Law", formula: "F = ma" },
@@ -17,17 +15,21 @@ const formulas = [
     { category: "Chemistry", name: "Charles's Law", formula: "V1/T1 = V2/T2" },
     { category: "Mathematics", name: "Binomial Theorem", formula: "(a+b)^n = Σ[k=0 to n] (nCk) a^(n-k) b^k" },
     { category: "Physics", name: "Coulomb's Law", formula: "F = k(q1q2/r²)" },
-    { category: "Chemistry", name: "Gibbs Free Energy", formula: "ΔG = ΔH - TΔS" },
-
+    { category: "Chemistry", name: "Gibbs Free Energy", formula: "ΔG = ΔH - TΔS" }
 ];
+
+for (let i = 0; i < 200; i++) {
+    formulas.push({ category: i % 3 === 0 ? "Mathematics" : i % 3 === 1 ? "Physics" : "Chemistry", name: `Formula ${i+1}`, formula: `x^${i} + y^${i} = z^${i}` });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search");
+    const categoryFilter = document.getElementById("category-filter");
     const formulasGrid = document.getElementById("formulas-grid");
 
-    function renderFormulas(filter = "") {
+    function renderFormulas(filter = "", category = "all") {
         formulasGrid.innerHTML = "";
-        formulas.filter(f => f.name.toLowerCase().includes(filter.toLowerCase()) || f.category.toLowerCase().includes(filter.toLowerCase()))
+        formulas.filter(f => (category === "all" || f.category === category) && (f.name.toLowerCase().includes(filter.toLowerCase()) || f.category.toLowerCase().includes(filter.toLowerCase())))
             .forEach(formula => {
                 const card = document.createElement("div");
                 card.className = "card";
@@ -36,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    searchInput.addEventListener("input", (e) => renderFormulas(e.target.value));
+    searchInput.addEventListener("input", (e) => renderFormulas(e.target.value, categoryFilter.value));
+    categoryFilter.addEventListener("change", (e) => renderFormulas(searchInput.value, e.target.value));
 
     renderFormulas();
 });
