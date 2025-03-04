@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +9,16 @@
 </head>
 <body>
     <div class="container">
-        
         <h1>Scientific Formulas Library</h1>
-
+        <select id="category-filter">
+            <option value="all">All</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+        </select>
         <input type="text" id="search" placeholder="Search for a formula...">
         <div id="formulas-grid"></div>
     </div>
 </body>
 </html>
+
